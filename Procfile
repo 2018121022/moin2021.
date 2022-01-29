@@ -1,0 +1,1 @@
+web: gunicorn moinproject.wsgi --log-file -
