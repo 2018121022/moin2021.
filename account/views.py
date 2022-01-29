@@ -12,6 +12,16 @@ from .models import User
 from .forms import RegisterForm
 import re
 from django.contrib.auth.decorators import login_required
+from moin_1.models import Open_1
+from moin_2.models import Open_2
+from moin_3.models import Open_3
+from moin_4.models import Open_4
+from moin_5.models import Open_5
+from moin_6.models import Open_6
+from moin_7.models import Open_7
+from moin_8.models import Open_8
+from moin_9.models import Open_9
+
 
 def signup(request):
     form = RegisterForm()
@@ -126,6 +136,16 @@ def activate(request, uidb64, token):
 
 @login_required(login_url='login')
 def edit(request):
+    open_1 = Open_1.objects.all()
+    open_2 = Open_2.objects.all()
+    open_3 = Open_3.objects.all()
+    open_4 = Open_4.objects.all()
+    open_5 = Open_5.objects.all()
+    open_6 = Open_6.objects.all()
+    open_7 = Open_7.objects.all()
+    open_8 = Open_8.objects.all()
+    open_9 = Open_9.objects.all()
+
     user = request.user
 
     if request.method == "POST":
@@ -139,7 +159,7 @@ def edit(request):
             user.자기소개 = request.POST['자기소개']
 
         user.save()
-        return render(request, 'mypage.html', {'user': user})
+        return render(request, 'mypage.html', {'user': user, 'open_1': open_1, 'open_2': open_2, 'open_3': open_3, 'open_4': open_4, 'open_5': open_5, 'open_6': open_6, 'open_7': open_7, 'open_8': open_8, 'open_9': open_9})
 
     return render(request, 'edit.html', {'user': user})
 
